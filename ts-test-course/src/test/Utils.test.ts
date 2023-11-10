@@ -13,38 +13,47 @@ describe('Utils test suite', () => {
     expect(actual).toBe(expected);
   });
 
-  it.only('should return info for a valid string', () => {
-    const actual = getStringInfo('My-String');
+  describe('getStringInfo for arg My-String should', () => {
+    it('return right length', () => {
+      const actual = getStringInfo('My-String');
+      expect(actual.characters).toHaveLength(9);
+    });
 
-    // use toBe for primitive types
-    // toEqual for non-primitives
+    it('return right lowercase', () => {
+      const actual = getStringInfo('My-String');
+      expect(actual.lowerCase).toBe('my-string');
+    });
 
-    expect(actual.lowerCase).toBe('my-string');
-    expect(actual.extraInfo).toEqual({});
+    it('return right uppercase', () => {
+      const actual = getStringInfo('My-String');
+      expect(actual.upperCase).toBe('MY-STRING');
+    });
 
-    // expect(actual.characters.length).toBe(9);
-    expect(actual.characters).toHaveLength(9);
+    it('return right characters', () => {
+      const actual = getStringInfo('My-String');
+      expect(actual.characters).toEqual([
+        'M',
+        'y',
+        '-',
+        'S',
+        't',
+        'r',
+        'i',
+        'n',
+        'g',
+      ]);
+      expect(actual.characters).toContain<string>('M');
+      expect(actual.characters).toEqual(
+        expect.arrayContaining(['S', 't', 'r', 'i', 'n', 'g', 'M', 'y', '-'])
+      );
+    });
 
-    expect(actual.characters).toEqual([
-      'M',
-      'y',
-      '-',
-      'S',
-      't',
-      'r',
-      'i',
-      'n',
-      'g',
-    ]);
-    expect(actual.characters).toContain<string>('M');
-
-    expect(actual.characters).toEqual(
-      expect.arrayContaining(['S', 't', 'r', 'i', 'n', 'g', 'M', 'y', '-'])
-    );
-
-    expect(actual.extraInfo).not.toBe(undefined);
-    expect(actual.extraInfo).not.toBeUndefined();
-    expect(actual.extraInfo).toBeDefined();
-    expect(actual.extraInfo).toBeTruthy();
+    it('return right extra info', () => {
+      const actual = getStringInfo('My-String');
+      expect(actual.extraInfo).not.toBe(undefined);
+      expect(actual.extraInfo).not.toBeUndefined();
+      expect(actual.extraInfo).toBeDefined();
+      expect(actual.extraInfo).toBeTruthy();
+    });
   });
 });
