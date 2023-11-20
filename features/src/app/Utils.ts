@@ -1,6 +1,9 @@
 export class StringUtils {
   public toUpperCase(arg: string) {
-    return arg.toUpperCase();
+    if (!arg) {
+      throw new Error('Invalid argument!');
+    }
+    return toUpperCase(arg);
   }
 }
 
