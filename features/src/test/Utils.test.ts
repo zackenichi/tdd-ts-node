@@ -1,7 +1,7 @@
 import { StringUtils, getStringInfo, toUpperCase } from '../app/Utils';
 
 describe('Utils test suite', () => {
-  describe.only('StringUtils tests', () => {
+  describe('StringUtils tests', () => {
     let sut: StringUtils;
 
     beforeEach(() => {
@@ -13,20 +13,22 @@ describe('Utils test suite', () => {
       expect(actual).toBe('ABC');
     });
 
-    it.only('Should throw error on invalid argument - function', () => {
+    // it.todo('test long strings');
+
+    it('Should throw error on invalid argument - function', () => {
       function expectError() {
         const actual = sut.toUpperCase('');
       }
       expect(expectError).toThrow('Invalid argument!');
     });
 
-    it.only('Should throw error on invalid argument - arrow function', () => {
+    it('Should throw error on invalid argument - arrow function', () => {
       expect(() => {
         sut.toUpperCase('');
       }).toThrow('Invalid argument!');
     });
 
-    it.only('Should throw error on invalid argument - try catch', (done: jest.DoneCallback) => {
+    it('Should throw error on invalid argument - try catch', (done: jest.DoneCallback) => {
       try {
         sut.toUpperCase('');
         done('GetStringInfo should throw error for invalid arg!');
@@ -50,8 +52,8 @@ describe('Utils test suite', () => {
     });
   });
 
-  describe('getStringInfo for arg My-String should', () => {
-    it('return right length', () => {
+  describe.skip('getStringInfo for arg My-String should', () => {
+    it.concurrent('return right length', () => {
       const actual = getStringInfo('My-String');
       expect(actual.characters).toHaveLength(9);
     });
