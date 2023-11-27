@@ -1,14 +1,14 @@
 import { StringUtils, getStringInfo, toUpperCase } from '../app/Utils';
 
 describe('Utils test suite', () => {
-  describe.only('StringUtils tests', () => {
+  describe('StringUtils tests', () => {
     let sut: StringUtils;
 
     beforeEach(() => {
       sut = new StringUtils();
     });
 
-    it.only('Should return correct upperCase', () => {
+    it('Should return correct upperCase', () => {
       const actual = sut.toUpperCase('abc');
       expect(actual).toBe('ABC');
     });
@@ -52,7 +52,7 @@ describe('Utils test suite', () => {
     });
   });
 
-  describe.skip('getStringInfo for arg My-String should', () => {
+  describe('getStringInfo for arg My-String should', () => {
     it.concurrent('return right length', () => {
       const actual = getStringInfo('My-String');
       expect(actual.characters).toHaveLength(9);
